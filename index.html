@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>My Map</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+<body>
+    <div id="wrapper" class='toggled'>
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+            	<div id='menu-toggle-wrapper'>
+            		<a href="#fullscreen" id='fullscreen-toggle' value="Fullscreen" onclick="onFullScreenClick()">
+            			<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+            		</a>
+        			<a href="#menu-toggle" id="menu-toggle">
+        				<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+        			</a>
+            	</div>
+                <li class="sidebar-brand">
+                    <a href="#">
+                    <h1><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>My Map</h1>
+                    </a>
+                    <hr>
+                </li>
+                <li class='sidebar-origin'>
+                    <label>Point de départ :</label>
+		        	<input class='form-control' type="text" name="origin" id="origin">
+			        <a href='#' class='btn btn-info' id="localize" onclick="onLocalizeClick()">
+        			<span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span>
+        			</a>
+                </li>
+                <li class='sidebar-destination'>
+                    <label>Destination :</label>
+					<input class='form-control' type="text" name="destination" id="destination">
+                </li>
+                <li class='sidebar-travelmode'>
+                    <label>Moyen de transport :</label>
+                    <select class='form-control' id="travelmode">
+                        <option value="DRIVING">Voiture</option>
+                        <option value="WALKING">Marche</option>
+                        <option value="BICYCLING">Vélo</option>
+                    </select>
+                </li>
+                <li class='sidebar-calculate'>
+                    <input type="button" id='calculate' class='btn btn-info' value="Calculer l'itinéraire" onclick="onCalculateClick()">
+                    <input type="button" id='clear' class='btn btn-danger' value="Réinitialiser" onclick="onClearClick()">
+                </li>
+                <li class='sidebar-details'>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" id='details'>
+                    Détails de l'itinéraire
+                    </button>
+                </li>
+                <li class='sidebar-backup'>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2" id='backup'>
+                    Dernier itinéraire enregistré
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div id="page-content-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+			    		<div id="map"></div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Votre itinéraire</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="panel"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <!-- Modal -->
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Votre itinéraire</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="panel-backup"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src='js/jquery.min.js'></script>
+    <script src='js/bootstrap.min.js'></script>
+	<script src='js/map.js'></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsAPabjHhW0fDYbQu3JTAEN42ILWKB4ks&callback=init&libraries=places&language=fr"
+    async defer></script>
+    <script src='js/fullscreen.js'></script>
+	<script src='js/menu-toggle.js'></script>
+
+</body>
+</html>
